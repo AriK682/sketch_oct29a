@@ -1,16 +1,17 @@
 #include <Adafruit_CircuitPlaground.h>
 
-
-let value
+int freq;
+int value;
 void setup() {
   // put your setup code here, to run once:
  CircuitPlayground.begin();
- Serial,begin(9600)
+ Serial,begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 value = analogRead(A3) 
-delay(500)
-
+Serial.print(value);
+freq=map(value,0,1023,100,1000);
+CircuitPlayground.playTone(freq,1000);  
 }
